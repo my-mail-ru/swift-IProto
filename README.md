@@ -11,5 +11,5 @@ as a thin wrapper and provides the same functionality.
 
 # Requirements
 
-* Swift 3.0 Preview 6
+* Swift 3.0
 * [libiprotocluster](https://github.com/my-mail-ru/libiprotocluster)

@@ -7,6 +7,6 @@ let package = Package(
 		Target(name: "IProto", dependencies: [.Target(name: "CIProto")]),
 	],
 	dependencies: [
-		.Package(url: "https://github.com/my-mail-ru/swift-BinaryEncoding", majorVersion: 0),
+		.Package(url: "https://github.com/my-mail-ru/swift-BinaryEncoding.git", majorVersion: 0),
 	]
 )
