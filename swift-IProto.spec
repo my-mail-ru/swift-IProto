@@ -12,6 +12,7 @@ BuildRoot:     %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires: swift
 BuildRequires: swift-packaging
 BuildRequires: libiprotocluster-devel
+BuildRequires: swift-BinaryEncoding
 
 %swift_find_provides_and_requires
 
