@@ -12,7 +12,7 @@ public final class Message {
 		self.cluster = cluster // Lifetime
 		self.code = code // For debug purposes
 		request = data // Ensure what data is alive long enough
-		pointer = request.withUnsafeBufferRawPointer {
+		pointer = request.withUnsafeBytes {
 			iproto_message_init(code, UnsafeMutablePointer(mutating: $0.baseAddress?.assumingMemoryBound(to: UnsafePointer<OpaquePointer>.self)), $0.count)
 		}
 		iproto_message_set_cluster(pointer, cluster.pointer)
@@ -48,7 +48,7 @@ public final class Message {
 		public struct Ok {
 			let message: Message
 			public var from: From
-			let buffer: UnsafeBufferRawPointer
+			let buffer: UnsafeRawBufferPointer
 
 			init(of message: Message) {
 				self.message = message
@@ -58,7 +58,7 @@ public final class Message {
 					let addr = iproto_message_response(message.pointer, &size, &replica)
 					return (
 						from: replica ? .replica : .master,
-						buffer: UnsafeBufferRawPointer(start: addr, count: size)
+						buffer: UnsafeRawBufferPointer(start: addr, count: size)
 					)
 				}
 			}
@@ -69,7 +69,7 @@ public final class Message {
 				}
 			}
 
-			public func withUnsafeBufferRawPointer<R>(_ body: (UnsafeBufferRawPointer) throws -> R) rethrows -> R {
+			public func withUnsafeBytes<R>(_ body: (UnsafeRawBufferPointer) throws -> R) rethrows -> R {
 				return try withExtendedLifetime(message) {
 					return try body(buffer)
 				}

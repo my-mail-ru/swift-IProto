@@ -12,7 +12,7 @@ BuildRoot:     %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires: swift >= 3.0.2
 BuildRequires: swift-packaging >= 0.6
 BuildRequires: libiprotocluster-devel
-BuildRequires: swiftpm(https://github.com/my-mail-ru/swift-BinaryEncoding.git)
+BuildRequires: swiftpm(https://github.com/my-mail-ru/swift-BinaryEncoding.git) >= 0.2.0
 
 %swift_find_provides_and_requires
 
