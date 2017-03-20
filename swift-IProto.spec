@@ -9,10 +9,10 @@ URL:           https://github.com/my-mail-ru/%{name}
 Source0:       https://github.com/my-mail-ru/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRoot:     %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
-BuildRequires: swift
-BuildRequires: swift-packaging
+BuildRequires: swift >= 3.0.2
+BuildRequires: swift-packaging >= 0.6
 BuildRequires: libiprotocluster-devel
-BuildRequires: swift-BinaryEncoding
+BuildRequires: swiftpm(https://github.com/my-mail-ru/swift-BinaryEncoding.git)
 
 %swift_find_provides_and_requires
 
@@ -46,6 +46,22 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %{swift_libdir}/*.so
+
+
+%package devel
+Summary:  Swift implementation of iproto framed transport protocol
+Requires: %{name} = %{version}-%{release}
+Requires: libiprotocluster-devel
+
+%description devel
+Implementation of iproto framed transport network protocol which is widely used among Mail.Ru Group's projects.
+It is built around libiprotocluster as a thin wrapper and provides the same functionality.
+
+%{?__revision:Built from revision %{__revision}.}
+
+
+%files devel
+%defattr(-,root,root,-)
 %{swift_moduledir}/*.swiftmodule
 %{swift_moduledir}/*.swiftdoc
 %{swift_clangmoduleroot}/CIProto
