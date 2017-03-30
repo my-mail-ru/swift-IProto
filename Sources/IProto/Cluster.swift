@@ -33,7 +33,7 @@ public final class Shard {
 		iproto_shard_add_servers(pointer, false, &masterPointers, Int32(masterPointers.count))
 		if !replicas.isEmpty {
 			var replicaPointers: [OpaquePointer?] = replicas.map { $0.pointer }
-			iproto_shard_add_servers(pointer, false, &replicaPointers, Int32(replicaPointers.count))
+			iproto_shard_add_servers(pointer, true, &replicaPointers, Int32(replicaPointers.count))
 		}
 	}
 
