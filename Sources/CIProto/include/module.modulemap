@@ -1,5 +1,0 @@
-module CIProto [system] {
-	header "shim.h"
-	link "iprotocluster"
-	export *
-}

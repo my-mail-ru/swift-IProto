@@ -11,8 +11,8 @@ BuildRoot:     %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 BuildRequires: swift >= 3.0.2
 BuildRequires: swift-packaging >= 0.6
-BuildRequires: libiprotocluster-devel
 BuildRequires: swiftpm(https://github.com/my-mail-ru/swift-BinaryEncoding.git) >= 0.2.0
+BuildRequires: swiftpm(https://github.com/my-mail-ru/swift-CIProto.git) >= 0.1.0
 
 %swift_find_provides_and_requires
 
@@ -34,7 +34,6 @@ It is built around libiprotocluster as a thin wrapper and provides the same func
 
 %install
 rm -rf %{buildroot}
-rm -f .build/release/libCIProto.so
 %swift_install
 %swift_install_devel
 
@@ -64,4 +63,3 @@ It is built around libiprotocluster as a thin wrapper and provides the same func
 %defattr(-,root,root,-)
 %{swift_moduledir}/*.swiftmodule
 %{swift_moduledir}/*.swiftdoc
-%{swift_clangmoduleroot}/CIProto
