@@ -9,10 +9,10 @@ URL:           https://github.com/my-mail-ru/%{name}
 Source0:       https://github.com/my-mail-ru/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRoot:     %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
-BuildRequires: swift >= 3.0.2
-BuildRequires: swift-packaging >= 0.6
-BuildRequires: swiftpm(https://github.com/my-mail-ru/swift-BinaryEncoding.git) >= 0.2.0
-BuildRequires: swiftpm(https://github.com/my-mail-ru/swift-CIProto.git) >= 0.1.0
+BuildRequires: swift >= 4
+BuildRequires: swift-packaging >= 0.9
+BuildRequires: swiftpm(https://github.com/my-mail-ru/swift-BinaryEncoding.git) >= 0.2.1
+BuildRequires: swiftpm(https://github.com/my-mail-ru/swift-CIProto.git) >= 0.2.1
 
 %swift_find_provides_and_requires
 
